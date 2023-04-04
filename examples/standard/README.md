@@ -34,9 +34,9 @@ module "sql" {
     }
   }
 
-  add_server_to_elastic_pool = true
+  add_server_to_elastic_pool   = true
   sql_server_elastic_pool_name = "sqlelp-${var.short}-${var.loc}-${terraform.workspace}-01"
-  elastic_pool_max_size_gb   = "4.8828125"
+  elastic_pool_max_size_gb     = "4.8828125"
 
   elastic_pool_settings = {
     sku = {
