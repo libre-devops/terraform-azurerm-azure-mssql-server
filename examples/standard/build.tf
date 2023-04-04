@@ -9,7 +9,7 @@ module "rg" {
 }
 
 module "sql" {
-  source = "registry.terraform.io/libre-devops/azure-mssql-server/azurerm""
+  source = "registry.terraform.io/libre-devops/azure-mssql-server/azurerm"
 
   rg_name  = module.rg.rg_name
   location = module.rg.rg_location
@@ -50,5 +50,4 @@ module "sql" {
     }
   }
 }
-
 
