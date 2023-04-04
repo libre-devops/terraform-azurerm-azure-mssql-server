@@ -35,24 +35,23 @@ module "sql" {
   }
 
   add_server_to_elastic_pool = true
-  elastic_pool_license_type = "LicenseIncluded"
-  elastic_pool_max_size_gb = "10"
+  elastic_pool_license_type  = "LicenseIncluded"
+  elastic_pool_max_size_gb   = "10"
 
   elastic_pool_settings = {
     sku = {
-      name = "BasicPool"
-      tier = "Basic"
-      family = "Gen4"
+      name     = "BasicPool"
+      tier     = "Basic"
+      family   = "Gen4"
       capacity = "4"
     }
 
-     per_database_settings = {
+    per_database_settings = {
       min_capacity = 0.25
       max_capacity = 4
-      }
     }
-
-    }
+  }
+}
 
 
 ```

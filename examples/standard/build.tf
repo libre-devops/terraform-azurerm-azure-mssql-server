@@ -49,7 +49,6 @@ module "sql" {
       max_capacity = 4
     }
   }
-
 }
 
 
