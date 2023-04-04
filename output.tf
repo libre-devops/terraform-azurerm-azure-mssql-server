@@ -1,32 +1,36 @@
-output "sa_id" {
-  value       = azurerm_storage_account.sa.id
-  description = "The ID of the storage account"
+output "elastic_pool_id" {
+  value       = var.add_server_to_elastic_pool == true ? azurerm_mssql_elasticpool.mssql_elastic_pool[count.index].id : null
+  description = "The ID of the elastic pool, if one is provisoned"
 }
 
-output "sa_name" {
-  value       = azurerm_storage_account.sa.name
-  description = "The name of the storage account"
-}
-
-output "sa_primary_access_key" {
-  value       = azurerm_storage_account.sa.primary_access_key
-  description = "The primary access key of the storage account"
+output "sql_server_admin_password" {
+  value       = azurerm_mssql_server.mssql_server.administrator_login_password
+  description = "The password of the SQL server"
   sensitive   = true
 }
 
-output "sa_primary_blob_endpoint" {
-  value       = azurerm_storage_account.sa.primary_blob_endpoint
-  description = "The primary blob endpoint of the storage account"
-}
-
-output "sa_primary_connection_string" {
-  value       = azurerm_storage_account.sa.primary_blob_connection_string
-  description = "The primary blob connection string of the storage account"
+output "sql_server_admin_username" {
+  value       = azurerm_mssql_server.mssql_server.administrator_login
+  description = "The username of the SQL server"
   sensitive   = true
 }
 
-output "sa_secondary_access_key" {
-  value       = azurerm_storage_account.sa.secondary_access_key
-  description = "The secondary access key of the storage account"
-  sensitive   = true
+output "sql_server_fqdn" {
+  value       = azurerm_mssql_server.mssql_server.fully_qualified_domain_name
+  description = "The FQDN of the sql server"
+}
+
+output "sql_server_id" {
+  value       = azurerm_mssql_server.mssql_server.id
+  description = "The ID of the SQL Server"
+}
+
+output "sql_server_identity" {
+  value       = azurerm_mssql_server.mssql_server.identity
+  description = "The identity block of the SQL Server"
+}
+
+output "sql_server_name" {
+  value       = azurerm_mssql_server.mssql_server.name
+  description = "The name of the SQL Server"
 }
