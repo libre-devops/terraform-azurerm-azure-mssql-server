@@ -9,7 +9,7 @@ module "rg" {
 }
 
 module "sql" {
-  source = "registry.terraform.io/libre-devops/azure-mssql-server/azurerm"
+  source = "../../"
 
   rg_name  = module.rg.rg_name
   location = module.rg.rg_location
@@ -25,12 +25,31 @@ module "sql" {
   sql_server_settings = {
 
     azuread_administrator = {
-      login_username              = "LibreDevOpsAdmin"
+      login_username              = "lbdoadmin"
       object_id                   = data.azurerm_client_config.current_creds.object_id
       tenant_id                   = data.azurerm_client_config.current_creds.tenant_id
       azuread_authentication_only = false
     }
-
   }
+
+  add_server_to_elastic_pool = true
+  elastic_pool_license_type  = "LicenseIncluded"
+  elastic_pool_max_size_gb   = "10"
+
+  elastic_pool_settings = {
+    sku = {
+      name     = "BasicPool"
+      tier     = "Basic"
+      family   = "Gen4"
+      capacity = "4"
+    }
+
+    per_database_settings = {
+      min_capacity = 0.25
+      max_capacity = 4
+    }
+  }
+
 }
+
 

@@ -12,7 +12,7 @@ resource "azurerm_mssql_server" "mssql_server" {
   primary_user_assigned_identity_id    = try(var.primary_user_assigned_identity_id, null)
 
   dynamic "azuread_administrator" {
-    for_each = lookup(var.sql_server_settings, "azuread_administrator", {}) != {} ? [1] : []
+    for_each = lookup(var.sql_server_settings, "azuread_administrator", null) != {} ? [1] : []
     content {
       login_username              = lookup(var.sql_server_settings.azuread_administrator, "login_username", null)
       object_id                   = lookup(var.sql_server_settings.azuread_administrator, "object_id", null)
