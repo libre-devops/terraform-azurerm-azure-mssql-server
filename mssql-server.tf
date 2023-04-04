@@ -11,6 +11,7 @@ resource "azurerm_mssql_server" "mssql_server" {
   outbound_network_restriction_enabled = try(var.outbound_network_restriction_enabled, false)
   primary_user_assigned_identity_id    = try(var.primary_user_assigned_identity_id, null)
   tags                                 = var.tags
+
   dynamic "azuread_administrator" {
     for_each = lookup(var.sql_server_settings, "azuread_administrator", null) != {} ? [1] : []
     content {
