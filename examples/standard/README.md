@@ -35,20 +35,19 @@ module "sql" {
   }
 
   add_server_to_elastic_pool = true
-  elastic_pool_license_type  = "LicenseIncluded"
-  elastic_pool_max_size_gb   = "10"
+  sql_server_elastic_pool_name = "sqlelp-${var.short}-${var.loc}-${terraform.workspace}-01"
+  elastic_pool_max_size_gb   = "4.8828125"
 
   elastic_pool_settings = {
     sku = {
       name     = "BasicPool"
       tier     = "Basic"
-      family   = "Gen4"
-      capacity = "4"
+      capacity = "50"
     }
 
     per_database_settings = {
-      min_capacity = 0.25
-      max_capacity = 4
+      min_capacity = 0
+      max_capacity = 5
     }
   }
 }
@@ -62,7 +61,7 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | n/a |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.50.0 |
 
 ## Modules
 
