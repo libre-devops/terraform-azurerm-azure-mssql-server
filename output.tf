@@ -1,5 +1,5 @@
 output "elastic_pool_id" {
-  value       = var.add_server_to_elastic_pool == true ? azurerm_mssql_elasticpool.mssql_elastic_pool[count.index].id : null
+  value       = var.add_server_to_elastic_pool == true ? azurerm_mssql_elasticpool.mssql_elastic_pool[0].id : null
   description = "The ID of the elastic pool, if one is provisoned"
 }
 
