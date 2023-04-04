@@ -9,7 +9,7 @@ module "rg" {
 }
 
 module "sql" {
-  source = "../../"
+  source = "registry.terraform.io/libre-devops/azure-mssql-server/azurerm""
 
   rg_name  = module.rg.rg_name
   location = module.rg.rg_location
