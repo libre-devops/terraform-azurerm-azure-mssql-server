@@ -23,7 +23,7 @@ variable "elastic_pool_max_size_gb" {
 }
 
 variable "elastic_pool_settings" {
-  type        = map(any)
+  type        = any
   description = "The settings block for Elastic Pool"
   default     = {}
 }
@@ -108,7 +108,7 @@ variable "sql_server_name" {
 }
 
 variable "sql_server_settings" {
-  type        = map(any)
+  type        = any
   description = "The settings block for MSSQL server"
   default     = {}
 }
