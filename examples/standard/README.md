@@ -57,7 +57,7 @@ module "sa" {
   }
 }
 
-
+#tfsec:ignore:azure-database-no-public-access tfsec:ignore:azure-database-enable-audit tfsec:ignore:azure-database-retention-period-set
 module "sql" {
   source = "registry.terraform.io/libre-devops/azure-mssql-server/azurerm"
 
@@ -70,10 +70,11 @@ module "sql" {
   sql_server_name               = "sql-${var.short}-${var.loc}-${terraform.workspace}-01"
   public_network_access_enabled = true
 
-  identity_type = "SystemAssigned"
-  enable_audit_policy = true
+  identity_type                 = "SystemAssigned"
+  enable_audit_policy           = true
   audit_policy_storage_endpoint = module.sa.sa_primary_blob_endpoint
-  audit_policy_storage_key = module.sa.sa_primary_access_key
+  audit_policy_storage_key      = module.sa.sa_primary_access_key
+  audit_policy_retention_in_days = 120
 
   sql_server_settings = {
 
