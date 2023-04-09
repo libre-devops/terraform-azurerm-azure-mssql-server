@@ -4,6 +4,30 @@ variable "add_server_to_elastic_pool" {
   default     = false
 }
 
+variable "audit_policy_retention_in_days" {
+  description = "The amount of days audit policy has to be kept"
+  type        = number
+  default     = 7
+}
+
+variable "audit_policy_storage_endpoint" {
+  description = "Storage account endpoint if audit policy is enabled"
+  type        = string
+  default     = null
+}
+
+variable "audit_policy_storage_is_secondary_access_key" {
+  description = "If audit policy is enabled, is the key used the secondary key, default is false"
+  type        = bool
+  default     = false
+}
+
+variable "audit_policy_storage_key" {
+  description = "The storage account key if audit policy is enabled"
+  type        = string
+  default     = null
+}
+
 variable "elastic_pool_license_type" {
   type        = string
   description = "The license type of a elastic pool if one is provisioned"
@@ -34,6 +58,12 @@ variable "elastic_pool_zone_redundant" {
   default     = null
 }
 
+variable "enable_audit_policy" {
+  description = "Whether audit policy is enabled or not"
+  type        = bool
+  default     = false
+}
+
 variable "identity_ids" {
   description = "Specifies a list of user managed identity ids to be assigned to the VM."
   type        = list(string)
@@ -49,36 +79,6 @@ variable "identity_type" {
 variable "location" {
   description = "The location for this resource to be put in"
   type        = string
-}
-
-variable "enable_audit_policy" {
-  description = "Whether audit policy is enabled or not"
-  type = bool
-  default = false
-}
-
-variable "audit_policy_storage_endpoint" {
-  description = "Storage account endpoint if audit policy is enabled"
-  type = string
-  default = null
-}
-
-variable "audit_policy_storage_key" {
-  description = "The storage account key if audit policy is enabled"
-  type = string
-  default = null
-}
-
-variable "audit_policy_storage_is_secondary_access_key" {
-  description = "If audit policy is enabled, is the key used the secondary key, default is false"
-  type = bool
-  default = false
-}
-
-variable "audit_policy_retention_in_days" {
-  description = "The amount of days audit policy has to be kept"
-  type = number
-  default = 7
 }
 
 variable "minimum_tls_version" {
