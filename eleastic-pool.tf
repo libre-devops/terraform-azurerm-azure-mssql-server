@@ -8,6 +8,7 @@ resource "azurerm_mssql_elasticpool" "mssql_elastic_pool" {
   license_type                   = var.elastic_pool_license_type
   max_size_gb                    = var.elastic_pool_max_size_gb
   zone_redundant                 = var.elastic_pool_zone_redundant
+  tags                           = var.tags
 
 
   dynamic "sku" {
