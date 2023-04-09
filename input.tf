@@ -51,6 +51,36 @@ variable "location" {
   type        = string
 }
 
+variable "enable_audit_policy" {
+  description = "Whether audit policy is enabled or not"
+  type = bool
+  default = false
+}
+
+variable "audit_policy_storage_endpoint" {
+  description = "Storage account endpoint if audit policy is enabled"
+  type = string
+  default = null
+}
+
+variable "audit_policy_storage_key" {
+  description = "The storage account key if audit policy is enabled"
+  type = string
+  default = null
+}
+
+variable "audit_policy_storage_is_secondary_access_key" {
+  description = "If audit policy is enabled, is the key used the secondary key, default is false"
+  type = bool
+  default = false
+}
+
+variable "audit_policy_retention_in_days" {
+  description = "The amount of days audit policy has to be kept"
+  type = number
+  default = 7
+}
+
 variable "minimum_tls_version" {
   type        = string
   description = "The minimum TLS version of the SQL server, defaults to 1.2"

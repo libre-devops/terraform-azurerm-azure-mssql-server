@@ -44,3 +44,12 @@ resource "azurerm_mssql_server" "mssql_server" {
     }
   }
 }
+
+resource "azurerm_mssql_server_extended_auditing_policy" "audit_policy" {
+  count                                   = var.enable_audit_policy == true ? 1 : 0
+  server_id                               = azurerm_mssql_server.mssql_server.id
+  storage_endpoint                        = var.audit_policy_storage_endpoint
+  storage_account_access_key              = var.audit_policy_storage_key
+  storage_account_access_key_is_secondary = var.audit_policy_storage_is_secondary_access_key
+  retention_in_days                       = var.audit_policy_retention_in_days
+}
